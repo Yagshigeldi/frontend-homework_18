@@ -1,22 +1,22 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import NotFound from '../not-found/NotFound'
 import avatarImage from "../../assets/avatar.jpg"
+import { useFetch } from '../../hooks/useFetch'
 
 const Home = () => {
-  const [data, setData] = useState(null)
-  const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const {data, error, loading} = useFetch("users")
+//   const [data, setData] = useState(null)
+//   const [error, setError] = useState(null)
+//   const [loading, setLoading] = useState(true)
 
-useEffect(() => {
-  setLoading(true)
-  axios
-    .get("https://jsonplaceholder.typicode.com/users")
-    .then(res => setData(res.data))
-    .catch(err => setError(err))
-    .finally(() => setLoading(false))
-}, [])
+// useEffect(() => {
+//   setLoading(true)
+//   api
+//     .get("users")
+//     .then(res => setData(res.data))
+//     .catch(err => setError(err))
+//     .finally(() => setLoading(false))
+// }, [])
 
   const navigate = useNavigate()
 

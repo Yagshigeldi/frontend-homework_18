@@ -1,25 +1,26 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import NotFound from '../not-found/NotFound'
 import avatarImage from "../../assets/avatar.jpg"
+import { useFetch } from '../../hooks/useFetch'
 
 const UserDetail = () => {
-  const { id } = useParams()
-  const [data, setData] = useState(null)
-  const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(true)
+    const {id} = useParams()
+    const {data, error, loading} = useFetch(`users/${id}`)
+  // const { id } = useParams()
+  // const [data, setData] = useState(null)
+  // const [error, setError] = useState(null)
+  // const [loading, setLoading] = useState(true)
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    setLoading(true)
-    axios
-      .get(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then((res) => setData(res.data))
-      .catch((err) => setError(err))
-      .finally(() => setLoading(false))
-  }, [])
+  // useEffect(() => {
+  //   setLoading(true)
+  //   axios
+  //     .get(`https://jsonplaceholder.typicode.com/users/${id}`)
+  //     .then((res) => setData(res.data))
+  //     .catch((err) => setError(err))
+  //     .finally(() => setLoading(false))
+  // }, [])
 
   return (
     <div className='container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 p-6 mt-[50px] items-center'>

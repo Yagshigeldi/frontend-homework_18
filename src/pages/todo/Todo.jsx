@@ -1,21 +1,21 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
 import NotFound from '../not-found/NotFound'
+import { useFetch } from '../../hooks/useFetch'
 
 const Todo = () => {
-  const [data, setData] = useState(null)
-  const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const {data, error, loading} = useFetch("todos")
+  // const [data, setData] = useState(null)
+  // const [error, setError] = useState(null)
+  // const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    setLoading(true)
-    axios
-      .get("https://jsonplaceholder.typicode.com/todos")
-      .then(res => setData(res.data))
-      .catch(err => setError(err))
-      .finally(() => setLoading(false))
-  }, [])
-  console.log(data);
+  // useEffect(() => {
+  //   setLoading(true)
+  //   api
+  //     .get("todos")
+  //     .then(res => setData(res.data))
+  //     .catch(err => setError(err))
+  //     .finally(() => setLoading(false))
+  // }, [])
+  // console.log(data);
   
 
   return (
